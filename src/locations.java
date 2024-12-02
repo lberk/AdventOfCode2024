@@ -2,20 +2,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class locations {
-    private ArrayList<Integer[]> location_ids = new ArrayList<Integer[]>();
+    private final ArrayList<Integer[]> location_ids = new ArrayList<>();
     private int total;
 
     public void parseLine(String line) {
-        String[] split = line.split("   ");
+        String[] split = line.split(" {3}");
         //System.out.printf("Split: %s, %s\n", split[0], split[1]);
         appendLocations(Integer.parseInt(split[0]), Integer.parseInt(split[1]));
     }
     public void appendLocations(int location_a, int location_b) {
         Integer[] locations = {location_a, location_b};
         this.location_ids.add(locations);
-    }
-    public Integer[] getLocations(int index) {
-        return this.location_ids.get(index);
     }
 
     public void sort_locations() {

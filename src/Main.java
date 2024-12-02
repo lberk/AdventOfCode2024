@@ -12,7 +12,7 @@ public class Main {
         Charset charset = StandardCharsets.UTF_8;
         Path path = FileSystems.getDefault().getPath("./input_files/1/", "input");
         try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
-            String line = null;
+            String line;
             while ((line = reader.readLine()) != null) {
                 locations.parseLine(line);
             }

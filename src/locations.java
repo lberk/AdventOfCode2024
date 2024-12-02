@@ -3,6 +3,7 @@ import java.util.Collections;
 
 public class locations {
     private ArrayList<Integer[]> location_ids = new ArrayList<Integer[]>();
+    private int total;
 
     public void parseLine(String line) {
         String[] split = line.split("   ");
@@ -32,14 +33,26 @@ public class locations {
     }
 
     public int calculate_distance() {
-        int total = 0;
+        this.total = 0;
         for (Integer[] locationId : this.location_ids) {
             if (locationId[0] < locationId[1]) {
-                total += locationId[1] - locationId[0];
+                this.total += locationId[1] - locationId[0];
             } else {
-                total += locationId[0] - locationId[1];
+                this.total += locationId[0] - locationId[1];
             }
         }
-        return total;
+        return this.total;
+    }
+
+    public int calculate_similarity() {
+        this.total = 0;
+        ArrayList<Integer> temp = new ArrayList<>();
+        for (Integer[] locationId : this.location_ids) {
+            temp.add(locationId[1]);
+        }
+        for (Integer[] locationId : this.location_ids) {
+            this.total += locationId[0] * Collections.frequency(temp, locationId[0]);
+        }
+        return this.total;
     }
 }

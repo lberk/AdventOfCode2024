@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         locations locations = new locations();
         Charset charset = StandardCharsets.UTF_8;
-        Path path = FileSystems.getDefault().getPath(".", "input");
+        Path path = FileSystems.getDefault().getPath("./input_files/1/", "input");
         try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
             String line = null;
             while ((line = reader.readLine()) != null) {
@@ -21,7 +21,6 @@ public class Main {
         }
 
         locations.sort_locations();
-        int total = locations.calculate_distance();
-        System.out.println(total);
+        System.out.println(locations.calculate_similarity());
     }
 }
